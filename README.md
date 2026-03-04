@@ -13,25 +13,52 @@ See detailed architecture:
 
 ---
 
-## Quick Start
+## Environment Settings
 
-### Install
+### 1. Create virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+```
+
+### 2. Install server dependencies
 
 ```bash
 pip install -r server/requirements.txt
+```
+
+### 3. Install client dependencies
+
+```bash
 pip install -r client/requirements.txt
 ```
+### 4. Environment Variables
+
+Configure Gemini API key.
+
+Example:
+
+```bash
+export PROVIDER="gemini"
+export GEMINI_API_KEY="YOUR_API_KEY"
+export GEMINI_MODEL="gemini-3.1-flash-lite-preview"
+```
+[More Gemini Models](docs/models-gemini.md)
+
+## Quick Start
 
 ### Run Server
 
 ```bash
-python -m uvicorn server.app:app --reload
+python -m uvicorn server.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### Run Client
 
 ```bash
-python -m client.run --inbox ./inbox --server http://localhost:8000
+python -m client.run --inbox ./inbox --server http://localhost:8000 --doc-type receipt # receipt, invoice, document
 ```
 
 ---
