@@ -222,21 +222,54 @@ This ensures uvicorn uses the active Python environment.
 
 ---
 
-## Gemini API returns 404
+## Available Gemini Models
 
-The model name is invalid.
+### Gemini 3.1 Series
 
-List models:
+| Model ID | Input Limit (Tokens) | Output Limit (Tokens) | Description |
+|---|---|---|---|
+| gemini-3.1-pro-preview | 1,048,576 | 65,536 | Top-tier reasoning model for complex tasks |
+| **gemini-3.1-flash-lite-preview** | 1,048,576 | 65,536 | Fastest and lightest model in the 3.1 generation (default used in this project) |
+| gemini-3-pro-preview | 1,048,576 | 65,536 | Strong reasoning and long document analysis |
+| gemini-3-flash-preview | 1,048,576 | 65,536 | Balanced speed and performance for general APIs |
 
-```bash
-curl "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY"
+---
+
+### Gemini 2.5 Series
+
+| Model ID | Input Limit (Tokens) | Output Limit (Tokens) | Description |
+|---|---|---|---|
+| gemini-2.5-pro | 1,048,576 | 65,536 | High accuracy flagship model |
+| gemini-2.5-flash | 1,048,576 | 65,536 | Optimized for large-scale request handling |
+| gemini-2.5-flash-lite | 1,048,576 | 65,536 | Most cost-efficient option |
+| deep-research-pro-preview | 131,072 | 65,536 | Web search and deep analysis specialized |
+
+---
+
+### Gemini 2.0 / Gemma Series
+
+| Model ID | Input Limit (Tokens) | Output Limit (Tokens) | Description |
+|---|---|---|---|
+| gemini-2.0-flash-001 | 1,048,576 | 8,192 | Standard Flash model of the 2.0 generation |
+| gemini-2.0-flash-lite | 1,048,576 | 8,192 | Lightweight 2.0 generation model |
+| gemma-3-27b-it | 131,072 | 8,192 | Strong open model for text generation |
+| gemma-3-1b / 4b / 12b-it | 32,768 | 8,192 | Optimized for local and mobile environments |
+
+---
+
+### Default Model Used
+
+This project currently uses:
+
+```
+gemini-3.1-flash-lite-preview
 ```
 
-Then set:
+Reason:
 
-```
-GEMINI_MODEL=gemini-2.5-flash
-```
+- Very fast inference
+- Low cost
+- Sufficient reasoning capability for document extraction tasks
 
 ---
 
