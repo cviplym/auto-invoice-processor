@@ -7,6 +7,8 @@ from .schemas import DocType, ExtractedDoc
 from .parser import extract_json_object
 from .providers import get_provider
 
+import traceback
+
 load_dotenv()
 app = FastAPI(title="Invoice Auto Processor API", version="0.1.0")
 
@@ -62,6 +64,7 @@ async def process_document(
     try:
         raw = provider.generate(file_bytes=file_bytes, mime_type=mime_type, prompt=prompt)
     except Exception as e:
+        # traceback.print_exc() # 자세한 에러 사항 알고 싶을 때
         raise HTTPException(status_code=502, detail=f"Upstream provider error: {str(e)}")
 
     try:
