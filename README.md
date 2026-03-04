@@ -5,7 +5,7 @@ A minimal end-to-end demo that watches an `inbox/` folder, uploads newly created
 ---
 
 # Overview
-
+![Pipeline](docs/pipeline.png)
 This project demonstrates a simple **Document AI pipeline**.
 
 Client → Server → LLM → Structured Data
@@ -27,7 +27,7 @@ Flow:
 ---
 
 # Repository Structure
-
+```
 auto-invoice-processor/
 
 ├── server/  
@@ -54,7 +54,7 @@ auto-invoice-processor/
 │   └── .gitkeep  
 
 └── README.md  
-
+```
 ---
 
 # Requirements
